@@ -35,7 +35,7 @@
 
 2. Запустите программу:
     ```bash
-    python main.py
+    python main.py {file_path} # file_path - путь к файлу с данными
     ```
 
 ### Важные функции:
