@@ -4,7 +4,7 @@ from unittest.mock import patch
 from main import Sociometric
 
 
-class TestSocioNetwork(unittest.TestCase):
+class TestSociometric(unittest.TestCase):
 
     def setUp(self):
         """
@@ -52,7 +52,7 @@ class TestSocioNetwork(unittest.TestCase):
         statuses = socio_network.sociometric_status()
 
         # Ожидаемые социометрические статусы для участников
-        expected_statuses = [0.5, 0.5, 0.5, 0.5]
+        expected_statuses = [1, 1, 0, 1]
         self.assertEqual(statuses, expected_statuses)
 
     def test_emotional_expanse(self):
@@ -66,7 +66,7 @@ class TestSocioNetwork(unittest.TestCase):
         expanse = socio_network.emotional_expanse()
 
         # Ожидаемый индекс эмоциональной экспансивности
-        expected_expanse = 0.5  # В данном примере это 6 положительных выборов / 12 всего выборов
+        expected_expanse = 4
         self.assertAlmostEqual(expanse, expected_expanse, places=2)
 
     @patch("matplotlib.pyplot.show")

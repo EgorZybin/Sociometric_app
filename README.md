@@ -46,6 +46,19 @@
 - `cohesion_index()`: Рассчитывает индекс сплоченности.
 - `plot_socionetwork()`: Строит социограмму на основе данных.
 
+### Тестовая социограмма:
+
+Входные данные:
+
+```data.txt
+# Участники (номер) | 1  2  3  4
+1  +  -  0  +
+2  -  +  +  -
+3  0  0  +  +
+4  +  0  -  +
+```
+![Test Socionetwork](https://github.com/EgorZybin/Sociometric_app/blob/main/test_socionetwork.png?raw=true)
+
 ## Автор
 
 GitHub: [EgorZybin](https://github.com/EgorZybin)
