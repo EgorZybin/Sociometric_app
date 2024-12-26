@@ -57,7 +57,7 @@
 3  0  0  +  +
 4  +  0  -  +
 ```
-![Test Socionetwork](https://github.com/EgorZybin/Sociometric_app/blob/main/tests/test_sociometric.py)
+![Test Socionetwork](https://github.com/EgorZybin/Sociometric_app/blob/main/tests/test_sociometric.png)
 
 ## Автор
 
