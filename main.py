@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
 
 class Sociometric:
@@ -132,7 +133,6 @@ class Sociometric:
         for i in range(self.num_people):
             G.add_node(i)
 
-        # Добавление рёбер (положительные и отрицательные выборы)
         for i in range(self.num_people):
             for j in range(self.num_people):
                 if self.matrix[i, j] == 1:
@@ -144,15 +144,12 @@ class Sociometric:
         edge_colors = [G[u][v]['color'] for u, v in G.edges()]
         edge_weights = [G[u][v]['weight'] for u, v in G.edges()]
 
-        # Используем более сложное расположение для более группового отображения
-        pos = nx.spring_layout(G, k=0.5, iterations=50)  # Альтернатива для более плотного группирования
+        pos = nx.spring_layout(G, k=0.5, iterations=50)
 
-        # Цвета и размеры узлов зависят от статуса
         statuses = self.sociometric_status()
         node_colors = ['lightgreen' if status >= 0 else 'salmon' for status in statuses]
         node_sizes = [500 + 200 * abs(status) for status in statuses]  # Размеры узлов пропорциональны статусу
 
-        # Рисуем граф с улучшениями
         nx.draw(G, pos, with_labels=True, node_size=node_sizes, node_color=node_colors, font_size=12,
                 font_weight="bold",
                 edge_color=edge_colors, width=edge_weights, alpha=0.7)
@@ -163,8 +160,13 @@ class Sociometric:
         plt.show()
 
 
-if __name__ == "__main__":
-    file_path = "data.txt"  # Путь к текстовому файлу с данными
+def main():
+    if len(sys.argv) < 2:
+        print("Ошибка: не указан путь к файлу с данными.")
+        sys.exit(1)  # Завершаем программу с ошибкой
+
+    file_path = sys.argv[1]
+
     socio_metric = Sociometric(file_path)
     k = 2  # Лимит выборов
 
@@ -194,3 +196,7 @@ if __name__ == "__main__":
 
     # Строим социограмму
     socio_metric.plot_socionetwork()
+
+
+if __name__ == '__main__':
+    main()
