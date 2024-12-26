@@ -122,7 +122,7 @@ class Sociometric:
         Gn = disagreement_count / (self.num_people * k)
         return round(Gn, 2)
 
-    def plot_socionetwork(self):
+    def plot_socionetwork(self, file_name='sociometric.png'):
         """
         Построение социограммы.
         """
@@ -158,10 +158,11 @@ class Sociometric:
                 edge_color=edge_colors, width=edge_weights, alpha=0.7)
 
         plt.title("Социограмма")
+        # Сохраняем граф в файл (в формате PNG, JPG или SVG)
+        plt.savefig(file_name, format=file_name.split('.')[-1].upper())  # Сохранение в формате файла
         plt.show()
 
 
-# Пример использования
 if __name__ == "__main__":
     file_path = "data.txt"  # Путь к текстовому файлу с данными
     socio_metric = Sociometric(file_path)
